@@ -2,49 +2,62 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8">
     <title>Sign up — Expat Helper</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Load the component BEFORE using <site-header> -->
+    <script> src = "/site-header.js", id = "script-header"</script>
     <link href="styles.css" type="text/css" rel="stylesheet" />
+    <style>
+        .site-header {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+            .site-header .logo {
+                font-weight: 600;
+                text-decoration: none;
+                color: inherit;
+            }
+
+        nav a {
+            text-decoration: none;
+            color: #111;
+            padding: 0.25rem 0.5rem;
+            border-radius: 6px;
+        }
+
+            nav a:hover {
+                background: #f3f4f6;
+            }
+
+            nav a.is-active {
+                background: #e5e7eb;
+                font-weight: 600;
+            }
+
+        main {
+            max-width: 640px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+    </style>
 </head>
+
 <body>
     <!-- Header -->
-    #mainSkip to main content</a>
+
     <header>
-	    <div class="container header-inner" role="navigation" aria-label="Global">
-		    <div class="logo" aria-label="Site logo">
-			    <span class="logo-line">Expat</span>
-			    <span class="logo-line">Helper</span>
-		    </div>
-		    <nav aria-label="Primary">
-			    <a class=" link" href="index.htmlHome"> Home</a>
-			    <a id="Visa" class="link" href="visa.html"> Visa & Docs</a>
-			    <a class="link" href="housing.html">Housing</a>
-			    <a class="link href="health.html">Healthcare</a>
-			    <a class="link href="money">Money & Taxes</a>
-			    <a class="link href="community">Community</a>
-			    <a class="link href="guides">Guides</a>
-			    <a class="link href="safety">Safety & Fraud</a>
-			    <a class="link href="help"> About & Help</a>
-		    </nav>
-
-		    <div class="search" role="search">
-			    <label for="search" class="sr-only">Search</label>
-			    <input id="search" type="search" placeholder="Search visas, housing, threads" aria-label="Search site">
-			    <button class="btn hamburger" id="openDrawer" aria-controls="drawer" aria-expanded="false" aria-label="Open menu">☰</button>
-
-			    <div class="utility">
-				    <div class="auth">
-					    <a class="btn" href="signin.html">Sign In</a>
-					    <a class="btn" href="signup.html">Sign Up</a>
-				    </div>
-
-			    </div>
-		    </div>
-	    </div>
+        <script-header></script-header>
+        <div id="script-header" role="banner" aria-label="Site header"></div>
+        <
     </header>
 
-    <main id="main" class="container">
+
+    <main id="signUpMain" class="container">
         <h1>Create your account</h1>
         <p class="help">No real account will be created — this is a class prototype. Client‑side HTML validation is used.</p>
 

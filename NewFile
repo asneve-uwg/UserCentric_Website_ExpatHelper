@@ -1,0 +1,32 @@
+
+	    <div class="container header-inner" role="navigation" aria-label="Global">
+		    <div class="logo" aria-label="Site logo">
+			    <span class="logo-line">Expat</span>
+			    <span class="logo-line">Helper</span>
+		    </div>
+		    <nav aria-label="Primary">
+			    <a class=" link" href="index.htmlHome"> Home</a>
+			    <a id="Visa" class="link" href="visa.html"> Visa & Docs</a>
+			    <a class="link" href="housing.html">Housing</a>
+			    <a class="link href="health.html">Healthcare</a>
+			    <a class="link href="money">Money & Taxes</a>
+			    <a class="link href="community">Community</a>
+			    <a class="link href="guides">Guides</a>
+			    <a class="link href="safety">Safety & Fraud</a>
+			    <a class="link href="help"> About & Help</a>
+		    </nav>
+
+		    <div class="search" role="search">
+			    <label for="search" class="sr-only">Search</label>
+			    <input id="search" type="search" placeholder="Search visas, housing, threads" aria-label="Search site">
+			    <button class="btn hamburger" id="openDrawer" aria-controls="drawer" aria-expanded="false" aria-label="Open menu">?</button>
+
+			    <div class="utility">
+				    <div class="auth">
+					    <a class="btn" href="signin.html">Sign In</a>
+					    <a class="btn" href="signup.html">Sign Up</a>
+				    </div>
+
+			    </div>
+		    </div>
+	    </div>

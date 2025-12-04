@@ -429,6 +429,7 @@ nav.primary {
     }
 }
 
+
 /* Footer */
 footer {
     border-top: 1px solid var(--border);
@@ -462,5 +463,10 @@ footer {
     outline: 2px solid var(--focus);
     outline-offset: 2px;
 }
+
+/*signUpMain {
+    border-top: 1px solid var(--border);
+    padding: 32px 0;
+}*/
 
 
