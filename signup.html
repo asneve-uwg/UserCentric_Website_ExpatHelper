@@ -5,30 +5,43 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Sign up — Expat Helper</title>
-    styles.css
+    <link href="styles.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
     <!-- Header -->
     #mainSkip to main content</a>
     <header>
-        <div class="container bar" role="navigation" aria-label="Primary">
-            <div class="brand">Expat Helper</div>
-            <nav aria-label="Main">
-                index.htmlHome</a>
-                countries.html#visaVisa & Docs</a>
-                countries.html#housingHousing</a>
-                countries.html#healthHealthcare</a>
-                countries.html#moneyMoney & Taxes</a>
-                forum.htmlCommunity</a>
-                countries.htmlGuides</a>
-                countries.html#safetySafety & Fraud</a>
-                countries.html#helpAbout & Help</a>
-            </nav>
-            <div class="actions">
-                forum.htmlAsk a Question</a>
-                signup.htmlSign Up</a>
-            </div>
-        </div>
+	    <div class="container header-inner" role="navigation" aria-label="Global">
+		    <div class="logo" aria-label="Site logo">
+			    <span class="logo-line">Expat</span>
+			    <span class="logo-line">Helper</span>
+		    </div>
+		    <nav aria-label="Primary">
+			    <a class=" link" href="index.htmlHome"> Home</a>
+			    <a id="Visa" class="link" href="visa.html"> Visa & Docs</a>
+			    <a class="link" href="housing.html">Housing</a>
+			    <a class="link href="health.html">Healthcare</a>
+			    <a class="link href="money">Money & Taxes</a>
+			    <a class="link href="community">Community</a>
+			    <a class="link href="guides">Guides</a>
+			    <a class="link href="safety">Safety & Fraud</a>
+			    <a class="link href="help"> About & Help</a>
+		    </nav>
+
+		    <div class="search" role="search">
+			    <label for="search" class="sr-only">Search</label>
+			    <input id="search" type="search" placeholder="Search visas, housing, threads" aria-label="Search site">
+			    <button class="btn hamburger" id="openDrawer" aria-controls="drawer" aria-expanded="false" aria-label="Open menu">☰</button>
+
+			    <div class="utility">
+				    <div class="auth">
+					    <a class="btn" href="signin.html">Sign In</a>
+					    <a class="btn" href="signup.html">Sign Up</a>
+				    </div>
+
+			    </div>
+		    </div>
+	    </div>
     </header>
 
     <main id="main" class="container">
