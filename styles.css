@@ -183,11 +183,34 @@ nav.primary {
 }
 
 
+
 .auth {
     display: flex;
     flex-direction: column; /* vertical stack */
     gap: 4px; /* space between Sign In and Sign Up */
 }
+
+    .auth .btn {
+        display: inline-flex;
+        align-items Aligns flex items along the cross axis of the current line of the flex container. Widely available across major browsers (Baseline since March 2018) Learn more Don't show : center;
+        gap: 8px;
+        padding: 2px 2px;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        background: var(--card-bg);
+        color: var(--text);
+        box-shadow: var(--shadow);
+    }
+
+        .auth .btn.secondary {
+            background: #e6edf3;
+            color: #0b1426;
+        }
+
+        .auth .btn:hover {
+            background: #155bb5;
+        }
+
 
 
 .btn.secondary {
