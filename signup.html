@@ -1,0 +1,102 @@
+﻿
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sign up — Expat Helper</title>
+    styles.css
+</head>
+<body>
+    <!-- Header -->
+    #mainSkip to main content</a>
+    <header>
+        <div class="container bar" role="navigation" aria-label="Primary">
+            <div class="brand">Expat Helper</div>
+            <nav aria-label="Main">
+                index.htmlHome</a>
+                countries.html#visaVisa & Docs</a>
+                countries.html#housingHousing</a>
+                countries.html#healthHealthcare</a>
+                countries.html#moneyMoney & Taxes</a>
+                forum.htmlCommunity</a>
+                countries.htmlGuides</a>
+                countries.html#safetySafety & Fraud</a>
+                countries.html#helpAbout & Help</a>
+            </nav>
+            <div class="actions">
+                forum.htmlAsk a Question</a>
+                signup.htmlSign Up</a>
+            </div>
+        </div>
+    </header>
+
+    <main id="main" class="container">
+        <h1>Create your account</h1>
+        <p class="help">No real account will be created — this is a class prototype. Client‑side HTML validation is used.</p>
+
+        <!-- Basic HTML validation via attributes -->
+        signup-success.html
+        <div id="requirements" class="help">Required fields are marked with <span aria-hidden="true">*</span>.</div>
+
+        <div class="input">
+            <label for="firstName">First name *</label>
+            <input id="firstName" name="firstName" type="text" required minlength="2" autocomplete="given-name" />
+            <div class="help">At least 2 characters.</div>
+        </div>
+
+        <div class="input">
+            <label for="lastName">Last name *</label>
+            <input id="lastName" name="lastName" type="text" required minlength="2" autocomplete="family-name" />
+        </div>
+
+        <div class="input">
+            <label for="email">Email *</label>
+            <input id="email" name="email" type="email" required autocomplete="email" />
+            <div class="help">Must be a valid email address.</div>
+        </div>
+
+        <div class="input">
+            <label for="password">Password *</label>
+            <input id="password" name="password" type="password" required minlength="8"
+                   pattern="(?=.*[A-Z])(?=.*[a-z])(?=.*\\d).{8,}"
+                   aria-describedby="pwhelp" />
+            <div id="pwhelp" class="help">Min 8 chars, include upper, lower, and a number.</div>
+        </div>
+
+        <div class="input">
+            <label for="country">Primary destination country *</label>
+            <select id="country" name="country" required>
+                <option value="">-- Select --</option>
+                <option>Spain</option>
+                <option>Portugal</option>
+                <option>Germany</option>
+                <option>Canada</option>
+                <option>Australia</option>
+                <option>Malaysia</option>
+            </select>
+        </div>
+
+        <div class="input">
+            <label for="phone">Phone (optional)</label>
+            <input id="phone" name="phone" type="tel" inputmode="tel"
+                   pattern="^\\+?[0-9\\-\\s]{7,}$" placeholder="e.g., +1 404 555 0123" />
+            <div class="help">Digits, spaces, dashes; optional leading +.</div>
+        </div>
+
+        <div class="input">
+            <input id="tos" name="tos" type="checkbox" required />
+            <label for="tos">I agree to the Terms and Privacy Policy *</label>
+        </div>
+
+        <div style="display:flex; gap:.5rem">
+            <button type="submit">Create account</button>
+            index.htmlCancel</a>
+        </div>
+        </form>
+    </main>
+
+    <!-- Footer -->
+    <footer>… (same as above) …</footer>
+</body>
+</html>
