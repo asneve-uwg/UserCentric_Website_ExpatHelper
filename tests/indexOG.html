@@ -1,0 +1,384 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Expat Helper – Task‑first Prototype</title>
+  <meta name="description" content="Move abroad with confidence. A task‑first, neutral & minimal prototype homepage for visa, housing, healthcare, and community support.">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #111111;
+      --muted: #5A5A5A;
+      --border: #EAEAEA;
+      --accent: #2A66B2; /* muted blue */
+      --accent-quiet: #E9F1FB;
+      --success: #147D64;
+      --alert-bg: #FFF8E5;
+      --alert-text: #7A5B00;
+      --focus: #2A66B2;
+      --card-bg: #ffffff;
+      --chip-bg: #F7F7F7;
+      --shadow: 0 1px 2px rgba(0,0,0,0.06);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0F0F10;
+        --text: #F3F3F3;
+        --muted: #B4B4B4;
+        --border: #2A2A2A;
+        --accent: #7FB0FF;
+        --accent-quiet: #17365A;
+        --success: #5ED0A1;
+        --alert-bg: #2A2415;
+        --alert-text: #E9D18C;
+        --card-bg: #161617;
+        --chip-bg: #1E1E1F;
+        --shadow: none;
+      }
+    }
+
+    html { box-sizing: border-box; }
+    *, *::before, *::after { box-sizing: inherit; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+    /* Skip link */
+    .skip-link {
+      position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden;
+    }
+    .skip-link:focus {
+      left: 16px; top: 16px; width: auto; height: auto; background: var(--accent);
+      color: #fff; padding: 8px 12px; border-radius: 6px; z-index: 10000;
+    }
+
+    /* Header */
+    header { position: sticky; top: 0; background: var(--bg); border-bottom: 1px solid var(--border); z-index: 1000; }
+    .header-inner { display: flex; align-items: center; gap: 20px; height: 64px; }
+    .logo { font-weight: 600; letter-spacing: 0.2px; }
+
+    nav.primary { display: flex; gap: 24px; flex: 1 1 auto; }
+    nav.primary a { white-space: nowrap; color: var(--text); font-size: 15px; }
+
+    .search { margin-left: auto; display: flex; align-items: center; gap: 12px; }
+    .search input[type="search"] {
+      width: 280px; max-width: 40vw; padding: 8px 12px; border: 1px solid var(--border);
+      border-radius: 8px; background: var(--card-bg); color: var(--text);
+    }
+
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 8px; border: 1px solid var(--border);
+      background: var(--card-bg); color: var(--text); box-shadow: var(--shadow);
+    }
+    .btn:focus { outline: 2px solid var(--focus); outline-offset: 2px; }
+    .btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .btn.quiet { background: var(--accent-quiet); color: var(--accent); border-color: transparent; }
+    .btn.linky { border: none; background: transparent; color: var(--accent); padding: 0; }
+
+    .utility { display: flex; align-items: center; gap: 10px; }
+
+    /* Mobile nav */
+    .hamburger { display: none; }
+    @media (max-width: 960px) {
+      nav.primary { display: none; }
+      .search input[type="search"] { width: 160px; }
+      .hamburger { display: inline-flex; }
+    }
+
+    .drawer { position: fixed; inset: 0 0 0 auto; width: 320px; background: var(--bg); border-left: 1px solid var(--border);
+      transform: translateX(100%); transition: transform 200ms ease; z-index: 2000; padding: 16px; }
+    .drawer.open { transform: translateX(0%); }
+    .drawer a { display: block; padding: 10px 8px; color: var(--text); border-radius: 6px; }
+    .drawer a:hover { background: var(--chip-bg); }
+
+    /* Hero */
+    .hero { padding: 48px 0 24px; border-bottom: 1px solid var(--border); }
+    .hero h1 { font-size: 40px; line-height: 1.25; margin: 0 0 12px; }
+    .hero p { color: var(--muted); margin: 0 0 20px; }
+    .hero .cta { display: flex; flex-wrap: wrap; gap: 12px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .chip { display: inline-flex; align-items: center; gap: 8px; padding: 6px 10px; border: 1px solid var(--border); border-radius: 999px; background: var(--chip-bg); color: var(--muted); font-size: 13px; }
+
+    /* Quick paths */
+    .section { padding: 32px 0; }
+    .grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+    @media (max-width: 1200px) { .grid { grid-template-columns: repeat(4, 1fr); } }
+    @media (max-width: 960px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
+
+    .card { border: 1px solid var(--border); border-radius: 12px; padding: 16px; background: var(--card-bg); box-shadow: var(--shadow); }
+    .card h3 { margin: 8px 0; font-size: 18px; }
+    .card p { color: var(--muted); margin: 0; }
+
+    /* Country chips */
+    .country-row { display: flex; flex-wrap: wrap; gap: 8px; }
+    .country { padding: 8px 12px; border: 1px solid var(--border); border-radius: 999px; background: var(--chip-bg); }
+
+    /* Safety & Fraud */
+    .alert { display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 8px; background: var(--alert-bg); color: var(--alert-text); }
+    .alert button { margin-left: auto; }
+
+    /* Community snapshot */
+    .list { display: grid; grid-template-columns: 1fr; gap: 8px; }
+    .list-item { display: flex; justify-content: space-between; gap: 12px; padding: 10px; border: 1px solid var(--border); border-radius: 8px; }
+    .meta { color: var(--muted); font-size: 13px; }
+
+    /* Guides */
+    .guides { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    @media (max-width: 960px) { .guides { grid-template-columns: 1fr; } }
+
+    /* Footer */
+    footer { border-top: 1px solid var(--border); padding: 32px 0; }
+    .footer-cols { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    @media (max-width: 960px) { .footer-cols { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 640px) { .footer-cols { grid-template-columns: 1fr; } }
+    .footer-cols a { color: var(--muted); }
+
+    /* Focus */
+    :focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- Header -->
+  <header>
+    <div class="container header-inner" role="navigation" aria-label="Global">
+	    <div class="logo" aria-label="Site logo">
+		    <span class="logo-line">Expat</span>
+		    <span class="logo-line">Helper</span>
+	    </div>
+	    <nav class="primary" aria-label="Primary">
+        <a href="#">Home</a>
+        <a href="#visa">Visa & Docs</a>
+        <a href="#housing">Housing</a>
+        <a href="#health">Healthcare</a>
+        <a href="#money">Money & Taxes</a>
+        <a href="#community">Community</a>
+        <a href="#guides">Guides</a>
+        <a href="#safety">Safety & Fraud</a>
+        <a href="#help">About & Help</a>
+      </nav>
+      <div class="search" role="search">
+        <label for="search" class="sr-only">Search</label>
+        <input id="search" type="search" placeholder="Search visas, housing, threads" aria-label="Search site">
+        <button class="btn hamburger" id="openDrawer" aria-controls="drawer" aria-expanded="false" aria-label="Open menu">☰</button>
+        <div class="utility">
+          <button class="btn quiet" aria-label="Ask a question">Ask a Question</button>
+          <button class="btn" aria-label="Sign in">Sign In</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Drawer -->
+  <aside class="drawer" id="drawer" aria-hidden="true" aria-label="Mobile menu">
+    <nav>
+      <a href="#">Home</a>
+      <a href="#visa">Visa & Docs</a>
+      <a href="#housing">Housing</a>
+      <a href="#health">Healthcare</a>
+      <a href="#money">Money & Taxes</a>
+      <a href="#community">Community</a>
+      <a href="#guides">Guides</a>
+      <a href="#safety">Safety & Fraud</a>
+      <a href="#help">About & Help</a>
+      <hr>
+      <a href="#ask">Ask a Question</a>
+      <a href="#signin">Sign In</a>
+    </nav>
+  </aside>
+
+  <main id="main" class="container" tabindex="-1">
+    <!-- Hero -->
+    <section class="hero" aria-labelledby="hero-title">
+      <h1 id="hero-title">Move abroad with confidence.</h1>
+      <p>We’ll guide you step‑by‑step—so you can focus on what matters.</p>
+      <div class="cta">
+        <a class="btn primary" href="#visa">Start your visa journey</a>
+        <a class="btn" href="#housing">Find housing</a>
+        <a class="btn" href="#health">Register for healthcare</a>
+      </div>
+      <div class="chips" aria-label="Trust indicators">
+        <span class="chip">Verified sources</span>
+        <span class="chip">Moderated community</span>
+        <span class="chip">Plain‑language</span>
+      </div>
+    </section>
+
+    <!-- Quick Paths -->
+    <section class="section" aria-labelledby="qp-title" id="visa">
+      <h2 id="qp-title">Quick paths</h2>
+      <div class="grid">
+        <!-- Card template: icon (inline SVG), title, short copy -->
+        <article class="card" aria-label="Work Visa">
+          <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 7h16v10H4z"/><path fill="currentColor" d="M7 4h10v3H7z"/></svg>
+          <h3>Work Visa</h3>
+          <p>Answer a few questions to get your checklist.</p>
+        </article>
+        <article class="card" aria-label="Study Visa">
+          <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M2 9l10-5 10 5-10 5z"/><path fill="currentColor" d="M4 14v4l8 4 8-4v-4"/></svg>
+          <h3>Study Visa</h3>
+          <p>Eligibility and documents—made simple.</p>
+        </article>
+        <article class="card" aria-label="Retire Abroad">
+          <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="currentColor" opacity="0.15"/><path fill="currentColor" d="M12 7v5l4 2"/></svg>
+          <h3>Retire Abroad</h3>
+          <p>Financial proofs, timelines, healthcare options.</p>
+        </article>
+        <article class="card" aria-label="Join Family">
+          <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4z"/><path fill="currentColor" d="M2 20a10 10 0 0 1 20 0"/></svg>
+          <h3>Join Family</h3>
+          <p>Reunification requirements and next steps.</p>
+        </article>
+        <article class="card" aria-label="Digital Nomad">
+          <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 5h18v12H3z"/><path fill="currentColor" d="M8 19h8v1H8z"/></svg>
+          <h3>Digital Nomad</h3>
+          <p>Income proofs, duration, insurance guidance.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Country shortcuts -->
+    <section class="section" aria-labelledby="countries-title">
+      <h2 id="countries-title">Explore by country</h2>
+      <div class="country-row" role="list">
+        <span class="country" role="listitem">Spain</span>
+        <span class="country" role="listitem">Portugal</span>
+        <span class="country" role="listitem">Germany</span>
+        <span class="country" role="listitem">Canada</span>
+        <span class="country" role="listitem">Australia</span>
+        <a class="btn linky" href="#">See all</a>
+      </div>
+    </section>
+
+    <!-- Safety & Fraud -->
+    <section class="section" aria-labelledby="safety-title" id="safety">
+      <h2 id="safety-title">Safety & Fraud</h2>
+      <div class="alert" role="alert" aria-live="polite" id="alert">
+        <span>Rental scams are rising in popular destinations. Learn the signs.</span>
+        <button class="btn" id="dismissAlert" aria-label="Dismiss alert">Dismiss</button>
+      </div>
+      <div style="margin-top:12px; display:flex; gap:8px; flex-wrap:wrap;">
+        <a class="btn" href="#verify">Verify a listing</a>
+        <a class="btn" href="#official">Official links: consulate & immigration</a>
+      </div>
+    </section>
+
+    <!-- Community snapshot -->
+    <section class="section" aria-labelledby="community-title" id="community">
+      <h2 id="community-title">Community snapshot</h2>
+      <div class="list">
+        <div class="list-item">
+          <div>
+            <strong>Non‑lucrative visa timeline — Spain</strong>
+            <div class="meta">Updated 12 min ago</div>
+          </div>
+          <a href="#" class="btn linky">View</a>
+        </div>
+        <div class="list-item">
+          <div>
+            <strong>Register with GP — Portugal</strong>
+            <div class="meta">Updated 45 min ago</div>
+          </div>
+          <a href="#" class="btn linky">View</a>
+        </div>
+      </div>
+      <div style="margin-top:12px;">
+        <a class="btn quiet" href="#ask">Ask a Question</a>
+      </div>
+    </section>
+
+    <!-- Guides & Checklists -->
+    <section class="section" aria-labelledby="guides-title" id="guides">
+      <h2 id="guides-title">Guides & Checklists</h2>
+      <div class="guides">
+        <article class="card">
+          <h3>Moving to Spain: Step‑by‑step</h3>
+          <p class="meta">Concise checklist with official links.</p>
+          <a class="btn" href="#">Open checklist</a>
+        </article>
+        <article class="card">
+          <h3>Renting safely abroad</h3>
+          <p class="meta">Fraud signs, verification steps, scripts.</p>
+          <a class="btn" href="#">Download PDF</a>
+        </article>
+        <article class="card">
+          <h3>Healthcare registration: EU vs. non‑EU</h3>
+          <p class="meta">Compare paths, documents, timelines.</p>
+          <a class="btn" href="#">Compare</a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer role="contentinfo">
+    <div class="container footer-cols">
+      <div>
+        <h4>About</h4>
+        <a href="#">Our mission</a><br>
+        <a href="#">Editorial policy</a><br>
+        <a href="#">How we verify info</a>
+      </div>
+      <div>
+        <h4>Help</h4>
+        <a href="#">FAQs</a><br>
+        <a href="#">Contact</a><br>
+        <a href="#">Accessibility</a>
+      </div>
+      <div>
+        <h4>Policies</h4>
+        <a href="#">Privacy</a><br>
+        <a href="#">Terms</a><br>
+        <a href="#">Cookies</a>
+      </div>
+      <div>
+        <h4>Transparency</h4>
+        <a href="#">How we make money</a><br>
+        <a href="#">Source list</a><br>
+        <a href="#">Crisis support links</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Accessible mobile drawer toggle
+    const drawer = document.getElementById('drawer');
+    const openBtn = document.getElementById('openDrawer');
+    function toggleDrawer(open) {
+      drawer.classList.toggle('open', open);
+      drawer.setAttribute('aria-hidden', (!open).toString());
+      openBtn.setAttribute('aria-expanded', open.toString());
+    }
+    openBtn?.addEventListener('click', () => {
+      const isOpen = drawer.classList.contains('open');
+      toggleDrawer(!isOpen);
+    });
+    drawer.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') toggleDrawer(false);
+    });
+
+    // Dismissible alert (persisted)
+    const dismiss = document.getElementById('dismissAlert');
+    const alertBox = document.getElementById('alert');
+    const dismissed = localStorage.getItem('dismissSafety');
+    if (dismissed === 'true' && alertBox) alertBox.style.display = 'none';
+    dismiss?.addEventListener('click', () => {
+      alertBox.style.display = 'none';
+      localStorage.setItem('dismissSafety', 'true');
+    });
+  </script>
+</body>
+</html>
