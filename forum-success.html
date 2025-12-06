@@ -87,9 +87,13 @@
         <div class="card">
             <p><strong>Next steps:</strong></p>
             <ul>
-                <li>View country guide: malaysia.htmlMalaysia</a></li>
-                <li>Return to forum.htmlAsk a Question</a></li>
-                <li>Go back index.htmlHome</a></li>
+                <li>
+	                View country guide:
+	                <a class=" link" href="malaysia.html"> Malaysia</a>
+	               
+                </li>
+                <li>Return to <a class=" link" href="forum.html">Ask a Question</a></li>
+                <li>Go back to <a class=" link" href="index.htmlHome"> Home</a></li>
             </ul>
         </div>
     </main>
@@ -103,18 +107,18 @@
             if (!form || !input) return;
 
             // Matches the word "physiotheraphy" regardless of case.
-            // \b handles word boundaries so it also works when surrounded by other words.
-            const physiotheraphyWord = /\bphysio\b|\btheraphy\b/i;
+                                // \b handles word boundaries so it also works when surrounded by other words.
+                                const physiotheraphyWord = /\bphysio\b|\btheraphy\b/i;
 
-            form.addEventListener('submit', function (e) {
-                const q = input.value || '';
-                if (physiotheraphyWord.test(q)) {
-                    e.preventDefault();               // stop normal submit
-                    window.location.href = 'physiotheraphy_search.html'; // redirect
-                }
-                // else: allow normal behavior (e.g., submit to your search endpoint)
-            });
-        })();
+                                form.addEventListener('submit', function (e) {
+                                const q = input.value || '';
+                                if (physiotheraphyWord.test(q)) {
+                                e.preventDefault();               // stop normal submit
+                                window.location.href = 'physiotheraphy_search.html'; // redirect
+                                }
+                                // else: allow normal behavior (e.g., submit to your search endpoint)
+                                });
+                                })();
     </script>
 </body>
 </html>
