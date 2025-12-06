@@ -1,0 +1,125 @@
+﻿
+<!doctype html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Expat Helper – Task‑first Prototype</title>
+    <link href="styles.css" type="text/css" rel="stylesheet" />
+    <body>
+        -->
+        <div>
+
+        </div>
+        <body>
+            <a class="skip-link" href="#main">Skip to main content</a>
+
+
+            <!-- Header -->
+            <header>
+                <div class="container header-inner" role="navigation" aria-label="Global">
+                    <div class="logo" aria-label="Site logo">
+                        <span class="logo-line">Expat</span>
+                        <span class="logo-line">Helper</span>
+                    </div>
+                    <nav aria-label="Primary">
+                        <a class=" link" href="index.html"> Home</a>>
+                        <a class=" link" href="malaysia-forum.html"> Forums</a>
+
+                        >Visa & Docs
+                        >Housing
+                        >Healthcare
+                        >Money & Taxes
+                        >Community
+                        >Guides
+                        >Safety & Fraud
+                        >FAQ
+                    </nav>
+
+
+                    <form id="siteSearch" class="search" role="search" aria-label="">
+                        <label for="search" class="sr-only"></label>
+                        <input id="search"
+                               type="search"
+                               name="q"
+                               placeholder="Search visas, housing, threads…"
+                               aria-describedby="searchHelp"
+                               autocomplete="off"
+                               required />
+                        <button type="submit">Search</button>
+                        <!--<div id="searchHelp" class="sr-only">
+                    Type your query and press Enter. If your query contains the word “physiotheraphy”,
+                    you will be taken to a specialized page.
+                </div>-->
+                    </form>
+
+
+                    <div class="search" role="search">
+                        <!--<label for="search" class="sr-only">Search</label>
+                <input id="search" type="search" placeholder="Search visas, housing, threads" aria-label="Search site">-->
+                        <button class="btn hamburger" id="openDrawer" aria-controls="drawer" aria-expanded="false" aria-label="Open menu">☰</button>
+
+                        <div class="utility">
+                            <div class="auth">
+                                <a class="btn" href="signin.html">Sign In</a>
+                                <a class="btn" href="signup.html">Sign Up</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+
+            <!-- Drawer -->
+            <aside class="drawer" id="drawer" aria-hidden="true" aria-label="Mobile menu">
+                <nav>
+                    <a href="#">Home</a>
+                    countries.html#visaVisa & Docs</a>
+                    countries.html#housingHousing</a>
+                    countries.html#healthHealthcare</a>
+                    countries.html#moneyMoney & Taxes</a>
+                    forum.htmlCommunity</a>
+                    countries.htmlGuides</a>
+                    countries.html#safetySafety & Fraud</a>
+                    countries.html#helpAbout & Help</a>
+                </nav>
+            </aside>
+
+
+            <!-- Thread entry card -->
+            <article class="thread-card" aria-labelledby="thread-title">
+                <!-- Title -->
+                <h2 id="thread-title" class="thread-title">
+                    Malaysian Physio licence
+                </h2>
+
+                <!-- Category line -->
+                <div class="thread-category">Other Asia</div>
+
+                <!-- Excerpt (trimmed to resemble the forum preview) -->
+                <p class="thread-excerpt">
+                    …Hi Folks! I'm new to Malaysia, just moved to Kuala Lumpur, loving it so far….
+                    I'm a British Physio who would like to get my Malaysian <strong>Physiotherapy</strong> licence.
+                    I would really like to do some voluntary work (I've been told it's difficult to get a work permit).
+                    I'm interested in working with kids and adults who need long‑term rehab…
+                </p>
+
+                <!-- Meta row: replies, views, author, date -->
+                <div class="thread-meta" aria-label="Thread metadata">
+                    <span class="meta-item" title="Replies">💬 1</span>
+                    <span class="meta-item" title="Views">👁️ 5.2K</span>
+                    <!-- Optional small status badge (e.g., unread count) — matches your screenshot vibe -->
+                    <span class="meta-item"><span class="badge-round" aria-hidden="true">0</span></span>
+                    <span class="meta-item">orchids2014 · May 4, 2014</span>
+                </div>
+
+                <!-- Link to the full thread (optional) -->
+                <p class="thread-link">
+                    #Open thread
+                    </a>
+                    <!-- Or link to the original external page (for reference/testing only) -->
+                    <!-- <a class="btn linky" href="https://www.expatforum.com/threads/malaysian-physio-licence.422546/">Source</a> -->
+                </p>
+            </article>

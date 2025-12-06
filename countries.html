@@ -1,15 +1,14 @@
-
+﻿
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Sign up — Expat Helper</title>
+    <title>Countries — Expat Helper</title>
     <link href="styles.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
-    <!-- Header -->
-    #mainSkip to main content</a>
+
 
     <!-- Header -->
     <header>
@@ -67,77 +66,52 @@
     </header>
 
 
+    <!-- Drawer -->
+    <aside class="drawer" id="drawer" aria-hidden="true" aria-label="Mobile menu">
+        <nav>
+            <a href="#">Home</a>
+            countries.html#visaVisa & Docs</a>
+            countries.html#housingHousing</a>
+            countries.html#healthHealthcare</a>
+            countries.html#moneyMoney & Taxes</a>
+            forum.htmlCommunity</a>
+            countries.htmlGuides</a>
+            countries.html#safetySafety & Fraud</a>
+            countries.html#helpAbout & Help</a>
+        </nav>
+    </aside>
+
     <main id="main" class="container">
-        <h1>Create your account</h1>
-        <p class="help">No real account will be created — this is a class prototype. Client‑side HTML validation is used.</p>
-
-        <!-- Basic HTML validation via attributes -->
-        signup-success.html
-        <div id="requirements" class="help">Required fields are marked with <span aria-hidden="true">*</span>.</div>
+        <h1>Find country information</h1>
+        <p class="help">Use the search to filter the country list. For usability testing, try finding <strong>Malaysia</strong>.</p>
 
         <div class="input">
-            <label for="firstName">First name *</label>
-            <input id="firstName" name="firstName" type="text" required minlength="2" autocomplete="given-name" />
-            <div class="help">At least 2 characters.</div>
+            <label for="countrySearch">Search countries</label>
+            <input id="countrySearch" type="search" placeholder="Type to filter…" aria-controls="countryList" />
         </div>
 
-        <div class="input">
-            <label for="lastName">Last name *</label>
-            <input id="lastName" name="lastName" type="text" required minlength="2" autocomplete="family-name" />
-        </div>
+        <section id="visa">
+            <h2>Visa & Documents</h2>
+            <p class="help">General guidance pages link into country‑specific details.</p>
+        </section>
 
-        <div class="input">
-            <label for="email">Email *</label>
-            <input id="email" name="email" type="email" required autocomplete="email" />
-            <div class="help">Must be a valid email address.</div>
-        </div>
+        <ul id="countryList" class="grid cols-3" role="list">
+            <li class="card country"><h3>Spain</h3><p>#spainView overview</a></p></li>
+            <li class="card country"><h3>Portugal</h3><p>#portugalView overview</a></p></li>
+            <li class="card country"><h3>Germany</h3><p>#germanyView overview</a></p></li>
+            <li class="card country"><h3>Canada</h3><p>#canadaView overview</a></p></li>
+            <li class="card country"><h3>Australia</h3><p>#australiaView overview</a></p></li>
+            <li class="card country"><h3>Malaysia</h3><p><a class="cta" href="malia guide</a></p></li>
+        </ul>
 
-        <div class="input">
-            <label for="password">Password *</label>
-            <input id="password" name="password" type="password" required minlength="8"
-                   pattern="(?=.*[A-Z])(?=.*[a-z])(?=.*\\d).{8,}"
-                   aria-describedby="pwhelp" />
-            <div id="pwhelp" class="help">Min 8 chars, include upper, lower, and a number.</div>
-        </div>
-
-        <div class="input">
-            <label for="country">Primary destination country *</label>
-            <select id="country" name="country" required>
-                <option value="">-- Select --</option>
-                <option>Spain</option>
-                <option>Portugal</option>
-                <option>Germany</option>
-                <option>Canada</option>
-                <option>Australia</option>
-                <option>Malaysia</option>
-            </select>
-        </div>
-
-        <div class="input">
-            <label for="phone">Phone (optional)</label>
-            <input id="phone" name="phone" type="tel" inputmode="tel"
-                   pattern="^\\+?[0-9\\-\\s]{7,}$" placeholder="e.g., +1 404 555 0123" />
-            <div class="help">Digits, spaces, dashes; optional leading +.</div>
-        </div>
-
-        <div class="input">
-            <input id="tos" name="tos" type="checkbox" required />
-            <label for="tos">I agree to the Terms and Privacy Policy *</label>
-        </div>
-        <div style="display:flex; gap:.5rem">
-            <div class="utility">
-                <div class="auth">
-                    <a class="btn" href="signup-success.html">Create account</a>
-                </div>
-            </div>
-            <!--<button type="submit">Create account</button>-->
-            <a class="link" href=" index.html">Cancel</a>
-        </div>
-        </form>
+        <section id="housing"><h2>Housing</h2><p class="help">Local market guides, verification steps, scripts.</p></section>
+        <section id="health"><h2>Healthcare</h2><p class="help">How to register with public care and find insurance.</p></section>
+        <section id="money"><h2>Money & Taxes</h2><p class="help">Banking, tax residency, common forms.</p></section>
+        <section id="safety"><h2>Safety & Fraud</h2><p class="help">Scam signals and official reporting links.</p></section>
+        <section id="help"><h2>About & Help</h2><p class="help">FAQs, contact, accessibility.</p></section>
     </main>
 
-    <!-- Footer -->
-    <footer>… (same as above) …</footer>
+    <footer>…</footer>
 
     <script>
         (function () {
