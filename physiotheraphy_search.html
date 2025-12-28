@@ -1,0 +1,193 @@
+﻿
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Malaysia Forum — Expat Helper</title>
+    <!-- Use your uploaded CSS exactly -->
+
+    <link href="styles.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+    <!-- Accessible skip link -->
+    <!-- Header -->
+    <header>
+        <div class="container header-inner" role="navigation" aria-label="Global">
+            <div class="logo" aria-label="Site logo">
+                <span class="logo-line">Expat</span>
+                <span class="logo-line">Helper</span>
+            </div>
+            <nav aria-label="Primary">
+                <a class=" link" href="index.html"> Home</a>>
+                <a class=" link" href="malaysia-forum.html"> Forums</a>
+
+                >Visa & Docs
+                >Housing
+                >Healthcare
+                >Money & Taxes
+                >Community
+                >Guides
+                >Safety & Fraud
+                >FAQ
+            </nav>
+
+
+            <form id="siteSearch" class="search" role="search" aria-label="">
+                <label for="search" class="sr-only"></label>
+                <input id="search"
+                       type="search"
+                       name="q"
+                       placeholder="Search visas, housing, threads…"
+                       aria-describedby="searchHelp"
+                       autocomplete="off"
+                       required />
+                <button type="submit">Search</button>
+                <!--<div id="searchHelp" class="sr-only">
+                    Type your query and press Enter. If your query contains the word “physiotheraphy”,
+                    you will be taken to a specialized page.
+                </div>-->
+            </form>
+
+
+            <div class="search" role="search">
+                <!--<label for="search" class="sr-only">Search</label>
+                <input id="search" type="search" placeholder="Search visas, housing, threads" aria-label="Search site">-->
+                <button class="btn hamburger" id="openDrawer" aria-controls="drawer" aria-expanded="false" aria-label="Open menu">☰</button>
+
+                <div class="utility">
+                    <div class="auth">
+                        <a class="btn" href="signup.html">Sign In</a>
+                        <a class="btn" href="signup.html">Sign Up</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Drawer -->
+    <aside class="drawer" id="drawer" aria-hidden="true" aria-label="Mobile menu">
+        <nav>
+            <a href="#">Home</a>
+            countries.html#visaVisa & Docs</a>
+            countries.html#housingHousing</a>
+            countries.html#healthHealthcare</a>
+            countries.html#moneyMoney & Taxes</a>
+            forum.htmlCommunity</a>
+            countries.htmlGuides</a>
+            countries.html#safetySafety & Fraud</a>
+            countries.html#helpAbout & Help</a>
+        </nav>
+    </aside>
+
+    <!-- Main -->
+    <main id="main" class="container">
+        <!-- Breadcrumb like ExpatForum’s category trails -->
+        <nav aria-label="Breadcrumb" class="meta" style="margin-top:16px">
+            index.htmlHome</a> › forum.htmlCommunity</a> › <strong>Malaysia</strong>
+        </nav>
+
+        <section class="hero">
+            <h1>Malaysia Forum</h1>
+            <p>Ask questions, share experiences, and help fellow expats moving to or living in Malaysia.</p>
+            <div class="cta">
+                malaysia-forum-post.htmlNew thread</a>
+                #Subscribe</a>
+            </div>
+            <div class="chips">
+                <span class="chip">Visa & Docs</span>
+                <span class="chip">Housing</span>
+                <span class="chip">Healthcare</span>
+                <span class="chip">Money & Taxes</span>
+                <span class="chip">Safety & Fraud</span>
+            </div>
+        </section>
+
+        <!-- Thread list (modeled on ExpatForum’s index: title / replies / views / last post + date) -->
+        <section class="section" aria-labelledby="threads">
+            <h2 id="threads" class="sr-only">Threads</h2>
+
+            <!-- Column headers -->
+            <div class="list-item" style="font-weight:600;">
+                <div>Thread</div>
+                <div class="meta" style="white-space:nowrap;">Replies · Views · Last post</div>
+            </div>
+
+            <div class="list" id="threadList">
+                <!-- Sample threads (static) -->
+                <div class="list-item">
+                    <div>
+
+
+
+                        <!-- Only one thread card, like your screenshot -->
+                        <article class="thread-card" aria-labelledby="thread-title">
+                            <h1 id="thread-title" class="thread-title">Malaysian Physio licence</h1>
+                            <div class="thread-category">Other Asia</div>
+
+                            <p class="thread-excerpt">
+                                …Folks! I'm new to Malaysia, just moved to Kuala Lumpur, loving it so far….
+                                I'm a British Physio who would like to get my Malaysian <strong>Physiotherapy</strong> licence.
+                                I would really like to do some voluntary work (I've been told it's difficult to get a work permit).
+                                I'm interested in working with…
+                            </p>
+
+                            <div class="thread-meta" aria-label="Thread metadata">
+                                <span class="meta-item"><i class="icon">💬</i> 1</span>
+                                <span class="meta-item"><i class="icon">👁️</i> 5.3K</span>
+                                <span class="meta-item"><span class="badge-round">0</span></span>
+                                <span class="meta-item">orchids2014 · May 4, 2014</span>
+                            </div>
+                        </article>
+
+                        <!-- Optional actions -->
+                        <div class="cta" style="margin-top:12px">
+                            <a class="btn primary" hrefly / New thread</a>
+                            <a class="btn" href="malto Malaysia forum</a>
+                        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p class="meta">© 2025 Expat Helper — prototype (no real data stored).</p>
+        </div>
+    </footer>
+
+    <!-- Minimal drawer toggle -->
+    <script>
+        const btn = document.getElementById('openDrawer');
+        const drawer = document.getElementById('drawer');
+        if (btn && drawer) {
+            btn.addEventListener('click', () => {
+                const open = drawer.classList.toggle('open');
+                btn.setAttribute('aria-expanded', String(open));
+                drawer.setAttribute('aria-hidden', String(!open));
+            });
+        }
+    </script>
+
+
+    <script>
+        (function () {
+            const form = document.getElementById('siteSearch');
+            const input = document.getElementById('search');
+            if (!form || !input) return;
+
+            // Matches the word "physiotheraphy" regardless of case.
+            // \b handles word boundaries so it also works when surrounded by other words.
+            const physiotheraphyWord = /\bphysio\b|\btheraphy\b/i;
+
+            form.addEventListener('submit', function (e) {
+                const q = input.value || '';
+                if (physiotheraphyWord.test(q)) {
+                    e.preventDefault();               // stop normal submit
+                    window.location.href = 'physiotheraphy_search.html'; // redirect
+                }
+                // else: allow normal behavior (e.g., submit to your search endpoint)
+            });
+        })();
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,124 @@
+﻿
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Question posted — Expat Helper</title>
+    <link href="styles.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+    #mainSkip to main content</a>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-inner" role="navigation" aria-label="Global">
+            <div class="logo" aria-label="Site logo">
+                <span class="logo-line">Expat</span>
+                <span class="logo-line">Helper</span>
+            </div>
+            <nav aria-label="Primary">
+                <a class=" link" href="index.html"> Home</a>>
+                <a class=" link" href="malaysia-forum.html"> Forums</a>
+
+                >Visa & Docs
+                >Housing
+                >Healthcare
+                >Money & Taxes
+                >Community
+                >Guides
+                >Safety & Fraud
+                >FAQ
+            </nav>
+
+
+            <form id="siteSearch" class="search" role="search" aria-label="">
+                <label for="search" class="sr-only"></label>
+                <input id="search"
+                       type="search"
+                       name="q"
+                       placeholder="Search visas, housing, threads…"
+                       aria-describedby="searchHelp"
+                       autocomplete="off"
+                       required />
+                <button type="submit">Search</button>
+                <!--<div id="searchHelp" class="sr-only">
+                    Type your query and press Enter. If your query contains the word “physiotheraphy”,
+                    you will be taken to a specialized page.
+                </div>-->
+            </form>
+
+
+            <div class="search" role="search">
+                <!--<label for="search" class="sr-only">Search</label>
+                <input id="search" type="search" placeholder="Search visas, housing, threads" aria-label="Search site">-->
+                <button class="btn hamburger" id="openDrawer" aria-controls="drawer" aria-expanded="false" aria-label="Open menu">☰</button>
+
+                <div class="utility">
+                    <div class="auth">
+                        <a class="btn" href="signup.html">Sign In</a>
+                        <a class="btn" href="signup.html">Sign Up</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- Drawer -->
+    <aside class="drawer" id="drawer" aria-hidden="true" aria-label="Mobile menu">
+        <nav>
+            <a href="#">Home</a>
+            countries.html#visaVisa & Docs</a>
+            countries.html#housingHousing</a>
+            countries.html#healthHealthcare</a>
+            countries.html#moneyMoney & Taxes</a>
+            forum.htmlCommunity</a>
+            countries.htmlGuides</a>
+            countries.html#safetySafety & Fraud</a>
+            countries.html#helpAbout & Help</a>
+        </nav>
+    </aside>
+
+    <main id="main" class="container">
+        <h1 class="success">Your question was posted</h1>
+        <p>This is a confirmation page in the prototype flow.</p>
+        <div class="card">
+            <p><strong>Next steps:</strong></p>
+            <ul>
+                <li>
+	                View country guide:
+	                <a class=" link" href="malaysia.html"> Malaysia</a>
+	               
+                </li>
+                <li>Return to <a class=" link" href="forum.html">Ask a Question</a></li>
+                <li>Go back to <a class=" link" href="index.htmlHome"> Home</a></li>
+            </ul>
+        </div>
+    </main>
+
+    <footer>…</footer>
+
+    <script>
+        (function () {
+            const form = document.getElementById('siteSearch');
+            const input = document.getElementById('search');
+            if (!form || !input) return;
+
+            // Matches the word "physiotheraphy" regardless of case.
+                                // \b handles word boundaries so it also works when surrounded by other words.
+                                const physiotheraphyWord = /\bphysio\b|\btheraphy\b/i;
+
+                                form.addEventListener('submit', function (e) {
+                                const q = input.value || '';
+                                if (physiotheraphyWord.test(q)) {
+                                e.preventDefault();               // stop normal submit
+                                window.location.href = 'physiotheraphy_search.html'; // redirect
+                                }
+                                // else: allow normal behavior (e.g., submit to your search endpoint)
+                                });
+                                })();
+    </script>
+</body>
+</html>
